@@ -41,6 +41,7 @@ Partial Class Form1
         Me.textBoxDireccion = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'labelEmpleado
@@ -188,7 +189,6 @@ Partial Class Form1
         Me.textBoxDireccion.Name = "textBoxDireccion"
         Me.textBoxDireccion.Size = New System.Drawing.Size(189, 20)
         Me.textBoxDireccion.TabIndex = 17
-        Me.textBoxDireccion.Text = "e"
         '
         'Label3
         '
@@ -209,11 +209,21 @@ Partial Class Form1
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(510, 148)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(87, 28)
+        Me.btnBuscar.TabIndex = 19
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(609, 401)
+        Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.textBoxDireccion)
         Me.Controls.Add(Me.Label3)
@@ -259,4 +269,5 @@ Partial Class Form1
     Friend WithEvents textBoxDireccion As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents btnModificar As Button
+    Friend WithEvents btnBuscar As Button
 End Class

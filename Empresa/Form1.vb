@@ -2,6 +2,7 @@
 
     Public conex As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Oscar Lopez -  s1\Desktop\Oscar Lopez - S1\Empresa\Empresa\bin\Debug\empleados.accdb")
     Public com As New OleDb.OleDbCommand
+    Dim CantidadCaracteres As Integer = 10
 
     Function ConectarDB()
         Try
@@ -22,6 +23,16 @@
 
 
 
+
+    Function limpiarTextBoxs()
+        textBoxID.Clear()
+        textBoxNombre.Clear()
+        textBoxApellido.Clear()
+        textBoxEdad.Clear()
+        textBoxCargo.Clear()
+        textBoxDireccion.Clear()
+        textBoxTelefono.Clear()
+    End Function
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConectarDB()
     End Sub
@@ -31,7 +42,7 @@
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         Dim idEmpleado As String = textBoxID.Text
-        Dim CantidadCaracteres As Integer = 10
+
 
 
         If (idEmpleado.Length >= CantidadCaracteres) Then
@@ -42,17 +53,11 @@
             Dim Cargo As String = textBoxCargo.Text
             Dim telefonoEmpleado As String = textBoxTelefono.Text
             Dim DireccionEmpleado As String = textBoxDireccion.Text
-
-
-
-
-
-
             Dim sql As String
 
 
 
-            sql = String.Format("INSERT INTO Empleados(id_empleado,Nombre,Apellido,Edad,Cargo,Telefono,Direccion) VALUES({0},'{1}','{2}',{3},'{4}','{5}','{6 }')", CDbl(idEmpleado), Nombre, Apellido, Val(Edad), Cargo, telefonoEmpleado, DireccionEmpleado)
+            sql = String.Format("INSERT INTO Empleados(id_empleado,Nombre,Apellido,Edad,Cargo,Telefono,Direccion) VALUES('{0}','{1}','{2}',{3},'{4}','{5}','{6 }')", CDbl(idEmpleado), Nombre, Apellido, Edad, Cargo, telefonoEmpleado, DireccionEmpleado)
 
 
             Console.WriteLine(sql & "  SQL EJECUTADA.")
@@ -80,14 +85,7 @@
 
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
-        textBoxID.Clear()
-        textBoxNombre.Clear()
-        textBoxApellido.Clear()
-        textBoxEdad.Clear()
-        textBoxCargo.Clear()
-        textBoxDireccion.Clear()
-        textBoxTelefono.Clear()
-
+        limpiarTextBoxs()
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -115,6 +113,8 @@
         Dim CargoEmpleado As String = textBoxCargo.Text
         Dim sqlActualizar As String = String.Format("UPDATE Empleados SET Nombre = '{0}', Apellido = '{1}', Edad = {2}, Cargo = '{3}' WHERE Id_empleado = {4} ", NombreEmpleado, ApellidoEmpleado, EdadEmpleado, CargoEmpleado, empleadoID)
 
+
+
         Console.WriteLine(sqlActualizar)
 
 
@@ -133,6 +133,50 @@
         Catch ex As Exception
             MsgBox(Err.Description)
         End Try
+
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        Dim idABuscar As String = textBoxID.Text
+        Dim sqlBuscar As String
+
+
+        If (idABuscar.Length > CantidadCaracteres) Then
+            sqlBuscar = String.Format("SELECT * FROM Empleados WHERE Id_empleado = {0}", idABuscar)
+            Dim adapt As New OleDb.OleDbDataAdapter(sqlBuscar, conex)
+            Dim ds As New DataSet
+            adapt.Fill(ds)
+
+            If (ds.Tables(0).Rows.Count = 0) Then
+                MsgBox("No encontre ese registro")
+
+            Else
+
+                textBoxNombre.Text = ds.Tables(0).Rows(0)("Nombre").ToString()
+                textBoxApellido.Text = ds.Tables(0).Rows(0)("Apellido").ToString()
+                textBoxEdad.Text = ds.Tables(0).Rows(0)("Edad").ToString()
+                textBoxCargo.Text = ds.Tables(0).Rows(0)("Cargo").ToString()
+                textBoxTelefono.Text = ds.Tables(0).Rows(0)("telefono").ToString()
+                textBoxDireccion.Text = ds.Tables(0).Rows(0)("direccion").ToString()
+
+
+
+
+
+
+                ds.Dispose()
+
+            End If
+
+
+        Else
+                MsgBox("¡Se require una ID para realizar la consulta!")
+        End If
+
+
+
+
+
 
 
     End Sub
