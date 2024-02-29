@@ -42,6 +42,7 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.btnEliminar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'labelEmpleado
@@ -218,11 +219,21 @@ Partial Class Form1
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
+        'btnEliminar
+        '
+        Me.btnEliminar.Location = New System.Drawing.Point(510, 206)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(87, 28)
+        Me.btnEliminar.TabIndex = 20
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(609, 401)
+        Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.textBoxDireccion)
@@ -270,4 +281,5 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnEliminar As Button
 End Class

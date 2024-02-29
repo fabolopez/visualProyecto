@@ -160,10 +160,6 @@
                 textBoxDireccion.Text = ds.Tables(0).Rows(0)("direccion").ToString()
 
 
-
-
-
-
                 ds.Dispose()
 
             End If
@@ -177,6 +173,51 @@
 
 
 
+
+
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Dim idABorrar As String = textBoxID.Text
+
+        If (idABorrar.Length >= CantidadCaracteres) Then
+            Dim sqlExistente As String = String.Format("SELECT * FROM Empleados WHERE Id_empleado = {0}", idABorrar)
+
+            Dim adaptador As New OleDb.OleDbDataAdapter(sqlExistente, conex)
+            Dim datosEncontrado As New DataSet
+            adaptador.Fill(datosEncontrado)
+
+            If datosEncontrado.Tables(0).Rows.Count = 0 Then
+                MsgBox("No existe informacion del ID: " & idABorrar)
+
+            Else
+                Dim respuesta As DialogResult
+
+                respuesta = MsgBox("¿Quiere eliminar el registro ID : " & idABorrar & "", MessageBoxButtons.YesNo)
+
+                If respuesta = System.Windows.Forms.DialogResult.Yes Then
+                    Dim sqlBorrar As String = "DELETE * FROM Empleados WHERE Id_empleado = " & idABorrar & " "
+                    com.CommandType = sqlBorrar
+
+                    Try
+                        Dim res As Integer
+
+                        res = com.ExecuteNonQuery()
+
+                        If res >= 1 Then
+                            MsgBox(idABorrar & " fue eliminado correctamente de la base de datos")
+                        Else
+                            MsgBox("No se pudo eliminar, error.")
+                        End If
+
+                    Catch ex As Exception
+                        MsgBox(Err.Description)
+                    End Try
+                End If
+            End If
+
+
+        End If
 
 
     End Sub
