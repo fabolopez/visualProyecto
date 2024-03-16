@@ -1,10 +1,10 @@
 ﻿Public Class Form1
 
-    Public conex As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Oscar Lopez -  s1\Desktop\Oscar Lopez - S1\Empresa\Empresa\bin\Debug\empleados.accdb")
+    Public conex As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= empleados.accdb")
     Public com As New OleDb.OleDbCommand
     Dim CantidadCaracteres As Integer = 10
 
-    Function ConectarDB()
+    Private Sub ConectarDB()
         Try
             conex.Open()
             com.Connection = conex
@@ -19,12 +19,12 @@
             End If
 
         End Try
-    End Function
+    End Sub
 
 
 
 
-    Function limpiarTextBoxs()
+    Private Sub limpiarTextBoxs()
         textBoxID.Clear()
         textBoxNombre.Clear()
         textBoxApellido.Clear()
@@ -32,7 +32,7 @@
         textBoxCargo.Clear()
         textBoxDireccion.Clear()
         textBoxTelefono.Clear()
-    End Function
+    End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConectarDB()
     End Sub
@@ -111,7 +111,10 @@
         Dim ApellidoEmpleado As String = textBoxApellido.Text
         Dim EdadEmpleado As String = textBoxEdad.Text
         Dim CargoEmpleado As String = textBoxCargo.Text
-        Dim sqlActualizar As String = String.Format("UPDATE Empleados SET Nombre = '{0}', Apellido = '{1}', Edad = {2}, Cargo = '{3}' WHERE Id_empleado = {4} ", NombreEmpleado, ApellidoEmpleado, EdadEmpleado, CargoEmpleado, empleadoID)
+        Dim telefonoEmpleado As String = textBoxTelefono.Text
+        Dim direccionEmpleado As String = textBoxDireccion.Text
+        Dim sqlActualizar As String = String.Format("UPDATE Empleados SET Nombre = '{0}', Apellido = '{1}', Edad = {2}, Cargo = '{3}', telefono = {4}, direccion = '{5}' WHERE Id_empleado = {6} ",
+                                                    NombreEmpleado, ApellidoEmpleado, EdadEmpleado, CargoEmpleado, telefonoEmpleado, direccionEmpleado, empleadoID)
 
 
 
@@ -126,7 +129,7 @@
             Dim id0 As Integer
             id0 = com.ExecuteNonQuery()
             If id0 = 0 Then
-                MsgBox("¡No se pudo actualizar el registro!")
+                MsgBox(Err.Description)
             Else
                 MsgBox("Registro actualizado ID " & empleadoID)
             End If
@@ -158,12 +161,8 @@
                 textBoxCargo.Text = ds.Tables(0).Rows(0)("Cargo").ToString()
                 textBoxTelefono.Text = ds.Tables(0).Rows(0)("telefono").ToString()
                 textBoxDireccion.Text = ds.Tables(0).Rows(0)("direccion").ToString()
-
-
                 ds.Dispose()
-
             End If
-
 
         Else
                 MsgBox("¡Se require una ID para realizar la consulta!")
@@ -196,15 +195,15 @@
                 respuesta = MsgBox("¿Quiere eliminar el registro ID : " & idABorrar & "", MessageBoxButtons.YesNo)
 
                 If respuesta = System.Windows.Forms.DialogResult.Yes Then
-                    Dim sqlBorrar As String = "DELETE * FROM Empleados WHERE Id_empleado = " & idABorrar & " "
-                    com.CommandType = sqlBorrar
+
+                    Dim sqlBorrar As String = "DELETE FROM Empleados WHERE Id_empleado = " & idABorrar & " "
+                    com.CommandText = sqlBorrar
 
                     Try
-                        Dim res As Integer
-
-                        res = com.ExecuteNonQuery()
+                        Dim res As Integer = com.ExecuteNonQuery()
 
                         If res >= 1 Then
+                            limpiarTextBoxs()
                             MsgBox(idABorrar & " fue eliminado correctamente de la base de datos")
                         Else
                             MsgBox("No se pudo eliminar, error.")

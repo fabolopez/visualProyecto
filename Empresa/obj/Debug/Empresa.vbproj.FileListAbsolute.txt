@@ -10,3 +10,15 @@ C:\Users\Oscar Lopez -  s1\Desktop\Oscar Lopez - S1\Empresa\Empresa\obj\Debug\Em
 C:\Users\Oscar Lopez -  s1\Desktop\Oscar Lopez - S1\Empresa\Empresa\obj\Debug\Empresa.exe
 C:\Users\Oscar Lopez -  s1\Desktop\Oscar Lopez - S1\Empresa\Empresa\obj\Debug\Empresa.xml
 C:\Users\Oscar Lopez -  s1\Desktop\Oscar Lopez - S1\Empresa\Empresa\obj\Debug\Empresa.pdb
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\bin\Debug\Empresa.exe.config
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\bin\Debug\Empresa.exe
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\bin\Debug\Empresa.pdb
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\bin\Debug\Empresa.xml
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.vbproj.AssemblyReference.cache
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.Form1.resources
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.Resources.resources
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.vbproj.GenerateResource.cache
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.vbproj.CoreCompileInputs.cache
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.exe
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.xml
+C:\Users\Dark\Documents\Programacion\crudPrimerTrabajo\Empresa\obj\Debug\Empresa.pdb
